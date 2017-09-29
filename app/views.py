@@ -8,4 +8,7 @@ def index(request):
 
 
 def ask(request):
+	return render(request, 'app/ask.html')
+
+def question(request):
 	return render(request, 'app/question.html')

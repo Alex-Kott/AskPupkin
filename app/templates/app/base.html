@@ -21,15 +21,15 @@
 <body>
     <form id="header" class="form effect6">
     	<div id="logo" class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
-    		<img src="{% static 'app/logo.png' %}" />
+    		<a href="/">
+    			<img src="{% static 'app/logo.png' %}" />
+    		</a>
     	</div>
     	<div id="search-line" class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6" >
     		<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 " placeholder="Search">
     	</div>
     	<div id="ask-btn"  class="form-group col-lg-1 col-1">
-    		<a href="/ask/">
-    			<button class="btn btn-success ">Ask</button>
-    		</a>
+    		<a href="/ask/" class="btn btn-success ">Ask</a>
     	</div>
     	<div id="user-info" class="form-group col-lg-3 col-3">
     		<div id="avatar">
@@ -52,16 +52,10 @@
 	
 
     <div id="main" class="row">
-    	<div class="row questions-header" >
-    		<div class="col-lg-1"></div>
-    		<div class="col-lg-3">
-    			<span class="new-questions">New Questions</span>
-    		</div>
-    		<div class="col-lg-2">
-    			<span class="hot-questions"><a href="#">Hot questions</a></span>
-    		</div>
-    	</div>
+    	
         <div class="col-lg-8" id="content">
+
+        	{% block question_header %}{% endblock %}
         	{% block content %}{% endblock %}
         	{% block new_question %}{% endblock %}
 
