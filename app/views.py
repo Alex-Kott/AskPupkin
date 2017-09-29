@@ -12,3 +12,11 @@ def ask(request):
 
 def question(request):
 	return render(request, 'app/question.html')
+
+
+def login(request):
+	return render(request, 'app/login.html')
+
+
+def register(request):
+	return render(request, 'app/register.html')
