@@ -1,2 +1,2 @@
-# AskPupkin
-Educational Django-project. Question-answer site.
+# Django-project
+Django-project
