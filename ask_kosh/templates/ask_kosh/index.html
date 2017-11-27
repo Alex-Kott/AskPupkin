@@ -1,0 +1,76 @@
+{% extends "ask_kosh/base.html" %}
+{% load static %}
+
+{% block title %}ask_koshPupkin{% endblock %}
+
+
+
+{% block question_header %}
+
+<div class="row questions-header" >
+	<div class="col-lg-1"></div>
+	<div class="col-lg-4">
+		<span class="new-questions">New Questions</span>
+	</div>
+	<div class="col-lg-3">
+		<span class="hot-questions"><a href="#">Hot questions</a></span>
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row question" >
+	<div class="col-lg-2 left-col">
+		<div class="userpic">
+			<img src="{% static 'app/avatar.png' %}" />	
+		</div>
+		<div>
+			<form>
+				<input type="number" class="form-control" value="5" >
+			</form>
+		</div>
+	</div>
+	<div class="col-lg-10">
+		<h2><a href="#">How to build a moon park?</a></h2>
+		<div class="question-text">
+			Guys, I have a trouble with a moon park. Can't find a black-jack...
+		</div>
+		<div class="question-footer">
+			<div class="answers-link">
+				<a hrfe="#">
+					answers(5)
+				</a>
+			</div>
+			<div class="question-tags">
+				<span style="font-weight: bold;">Tags: </span>
+				<a href="#">blackjack</a>
+				<a href="#">bender</a>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>
+
+{% endblock %}
+
+
+{% block pagination %}
+
+	<nav aria-label="Page navigation example">
+	  <ul class="pagination">
+	    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+	    <li class="page-item"><a class="page-link" href="#">1</a></li>
+	    <li class="page-item"><a class="page-link" href="#">2</a></li>
+	    <li class="page-item"><a class="page-link" href="#">3</a></li>
+	    <li class="page-item"><a class="page-link" href="#">...</a></li>
+	    <li class="page-item"><a class="page-link" href="#">53</a></li>
+	    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+	  </ul>
+	</nav>
+
+{% endblock %}

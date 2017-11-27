@@ -1,0 +1,170 @@
+/*________ #header __________*/
+
+#header{
+	position: fixed;
+	top:0;
+	width:100%;
+/*	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;*/
+}
+
+#header div{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;	
+	height: 90px;
+	background: #fff;
+}
+
+#logo img{
+	width: 100%;
+}
+
+#ask-btn button{
+	width: 100%;
+}
+
+#avatar{
+	width: 30%;
+	padding: 10px;
+}
+
+#avatar img{
+	width: 100%;
+
+}
+
+#header #ttt{
+	width: 70%;
+	display: flex;
+	flex-direction: column ;
+	justify-content: center ;
+	align-items: start ;
+}
+
+#username{
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#username, #settings-log-out{
+	min-height: unset !important;
+}
+
+#settings-log-out h5{
+	margin-right: 10px;
+}
+
+.effect6
+{
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect6:before, .effect6:after
+{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:45%;
+    bottom:0;
+    left:-5%;
+    right:-15px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.effect6:after
+{
+    /*right:10px;*/
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+
+
+/*_______ #main ________*/
+
+#main{
+	position: relative;
+	top: 120px;
+}
+
+.new-questions{
+	display: inline-block;
+	font-size:2em;
+}
+
+.hot-questions{
+	display: inline-block;
+	font-size: 1.5em;
+}
+
+.questions-header div{
+	display: flexbox;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+}
+
+#tag-cloud{
+	padding-right: 20px;
+}
+
+.best-members{
+	font-size:1.2em;
+}
+
+
+/*_____ #content _____*/
+
+#content{
+	padding: 20px;
+	padding-left: 40px;
+}
+
+.question{
+	border: 1px solid black;
+	width: 100%;
+}
+
+.left-col div{
+	padding: 10px;
+}
+
+input[type=number]{
+	text-align: center;
+}
+
+.userpic img{
+	width: 100%;
+}
+
+.question-text{
+	min-height: 80px;
+}
+
+.question-footer{
+	display: flex;
+	flex-direction: row !important;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 20px;
+}
+
+.answers-link{
+	width: 20%;
+}
+
+.question-tags{
+	width: 80%;
+}
+

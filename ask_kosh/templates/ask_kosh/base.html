@@ -1,0 +1,115 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <form id="header" class="form effect6">
+    	<div id="logo" class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
+    		<a href="/">
+    			<img src="{% static 'app/logo.png' %}" />
+    		</a>
+    	</div>
+    	<div id="search-line" class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+    		<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 " placeholder="Search">
+    	</div>
+    	<div id="ask_kosh-btn"  class="form-group col-lg-1 col-1">
+    		<a href="/ask_kosh/" class="btn btn-success ">ask_kosh</a>
+    	</div>
+    	<div id="user-info" class="form-group col-lg-3 col-3">
+    		<div id="avatar">
+    			<img src="{% static 'app/avatar.png' %}" />
+    		</div>
+    		<div id="ttt">
+    			<div id="username">
+    				Dr. Pepper
+    			</div>
+    			<div id="settings-log-out">
+    				<h5><a href="#">Settings</a></h5>
+    				<h5><a href="#">Log out</a></h5>
+    			</div>
+    		</div>
+    	</div>
+    	
+	</form>
+
+
+	
+
+    <div id="main" class="row">
+    	
+        <div class="col-lg-8" id="content">
+
+        	{% block question_header %}{% endblock %}
+        	{% block content %}{% endblock %}
+        	{% block new_question %}{% endblock %}
+        	{% block login %}{% endblock %}
+        	{% block register %}{% endblock %}
+
+        	{% block pagination %}{% endblock %}
+
+        </div>
+        <div class="col-lg-4">
+        	<div class="row">
+        		<div class="col-lg-12">
+        			<h2>Popular Tags</h2>
+        			<div id="tag-cloud">
+        				<a href="#"><span>python</span></a> 
+        				<a href="#"><span>SQL</span></a> 
+        				<a href="#"><span>C/C++</span></a> 
+        				<a href="#"><span>Hask_koshell</span></a> 
+        				<a href="#"><span>Hadoop</span></a> 
+        				<a href="#"><span>HTML</span></a> 
+        				<a href="#"><span>CSS</span></a> 
+        				<a href="#"><span>React</span></a> 
+        				<a href="#"><span>JavaScript</span></a> 
+        				<a href="#"><span>PHP</span></a> 
+        				<a href="#"><span>PeeWee</span></a> 
+        				<a href="#"><span>API</span></a> 
+        				<a href="#"><span>HTTP</span></a> 
+        				<a href="#"><span>Web 2.0</span></a> 
+        				<a href="#"><span>RTC</span></a> 
+        				<a href="#"><span>WWW</span></a> 
+        				<a href="#"><span>ICQ</span></a> 
+        				<a href="#"><span>Apple</span></a> 
+        				<a href="#"><span>NVIDIA</span></a> 
+        				<a href="#"><span>Intel</span></a> 
+        				<a href="#"><span>WebSocket</span></a> 
+        				<a href="#"><span>Django</span></a> 
+        				<a href="#"><span>Flask_kosh</span></a> 
+        				<a href="#"><span>Zend</span></a> 
+        			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-lg-12">
+        			<h2>Best Members</h2>
+        			<ul class="best-members">
+        				<li><a href="#">Mr. Freeman</a></li>
+        				<li><a href="#">Dr. House</a></li>
+        				<li><a href="#">Bender</a></li>
+        				<li><a href="#">Queen Victoria</a></li>
+        				<li><a href="#">V Pupkin</a></li>
+        			</ul>
+        		</div>
+        	</div>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
