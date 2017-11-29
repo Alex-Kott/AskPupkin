@@ -22,6 +22,6 @@ def register(request):
 	return render(request, 'ask_kosh/register.html')
 
 
-def year(request):
-	print(request)
+def year(request, n):
+	print(n)
 	return render(request, 'ask_kosh/index.html')

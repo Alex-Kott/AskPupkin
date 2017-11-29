@@ -9,6 +9,6 @@ urlpatterns = [
 	url(r'^login/$', views.login, name='login'),
 	url(r'^register/$', views.register, name='register'),
 	# url(r'^hot/$', views.hot, name='hot'),
-	# url(r'^articles/(?P<year>[0-9]{4})/$', views.year, name="year"),
+	url(r'^articles/(?P<n>[0-9]{1,4})/$', views.year, name="year"),
 
 ]
