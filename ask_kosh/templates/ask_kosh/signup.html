@@ -1,0 +1,79 @@
+{% extends "ask_kosh/base.html" %}
+{% load static %}
+
+{% block title %}Ask Kosh{% endblock %}
+
+{% block signup %}
+
+<!--<h2>Sign up</h2>-->
+<!--<form method="post">-->
+    <!--{% csrf_token %}-->
+    <!--{% for field in form %}-->
+      <!--<p>-->
+        <!--{{ field.label_tag }}<br>-->
+        <!--{{ field }}-->
+      <!--</p>-->
+    <!--{% endfor %}-->
+    <!--<button type="submit">Sign up</button>-->
+<!--</form>-->
+
+<h2>Log In</h2>
+
+<form>
+    <!--<label class="form-check-label text-danger">Sorry, this email address already registered!</label>-->
+    {% for field in form %}
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">{{ field.label_tag }}</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="{{ field.help_text }}" >
+        </div>
+    </div>
+    {% endfor %}
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">Login</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="text" class="form-control" placeholder="Enter your login here" value="Example">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">Email</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="email" class="form-control" placeholder="Enter your email here" value="example@gmail.com">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">NickName</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="text" class="form-control" value="Example">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">Password</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="password" class="form-control" value="Example">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">Repeat password</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="password" class="form-control" value="Example">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">Upload avatar</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="file" class="form-control">-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="form-group row">
+        <div class="col-sm-2 col-form-label"></div>
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Register!</button>
+        </div>
+    </div>
+
+
+</form>
+
+
+{% endblock %}

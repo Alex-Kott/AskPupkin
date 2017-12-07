@@ -28,10 +28,10 @@
     	<div id="search-line" class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6" >
     		<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 " placeholder="Search">
     	</div>
-    	<div id="ask_kosh-btn"  class="form-group col-lg-1 col-1">
+    	<div id="ask_kosh-btn"  class="form-group col-lg-1 col-md-1 col-sm-1 col-xs-1">
     		<a href="/ask_kosh/" class="btn btn-success ">ask_kosh</a>
     	</div>
-    	<div id="user-info" class="form-group col-lg-3 col-3">
+    	<div id="user-info" class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
     		<div id="avatar">
     			<img src="{% static 'app/avatar.png' %}" />
     		</div>
@@ -59,7 +59,7 @@
         	{% block content %}{% endblock %}
         	{% block new_question %}{% endblock %}
         	{% block login %}{% endblock %}
-        	{% block register %}{% endblock %}
+        	{% block signup %}{% endblock %}
 
         	{% block pagination %}{% endblock %}
 
