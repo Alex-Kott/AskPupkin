@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
 	url(r'^', include('ask_kosh.urls')),
-    url(r'^admin/', admin.site.urls),
+	url(r'^admin/', admin.site.urls),
 ]
