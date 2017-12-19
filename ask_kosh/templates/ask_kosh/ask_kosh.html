@@ -6,34 +6,43 @@
 <h2>New Question</h2>
 
 <form>
-  <div class="form-group row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
-    <div class="col-sm-10">
-      <input type="text"  class="form-control">
+    {% csrf_token %}
+    <!--<div class="form-group row">-->
+        <!--<label for="staticEmail" class="col-sm-2 col-form-label">Title</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="text" class="form-control">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">Text</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+        <!--<label class="col-sm-2 col-form-label">Tags</label>-->
+        <!--<div class="col-sm-10">-->
+            <!--<input type="text" class="form-control">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    {% for field in form %}
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">{{ field.label_tag }}</label>
+        <div class="col-sm-10">
+            {{ field }}
+        </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label  class="col-sm-2 col-form-label">Text</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+    {% endfor %}
+    <div class="form-group row">
+        <div class="col-sm-2 col-form-label"></div>
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Ask</button>
+        </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Tags</label>
-    <div class="col-sm-10">
-      <input type="text"  class="form-control">
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-2 col-form-label"></div>
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Ask</button>
-    </div>
-  </div>
 
 </form>
-
-
 
 
 {% endblock %}

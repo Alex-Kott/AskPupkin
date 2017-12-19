@@ -1,20 +1,22 @@
 from django.shortcuts import render, redirect, resolve_url
 from django.template import RequestContext
 from django.contrib.auth.models import User
-from ask_kosh.core.forms import SignUpForm, SignInForm
+from ask_kosh.core.forms import SignUpForm, SignInForm, NewQuestionForm
 from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 
 
 def index(request):
-	print("INDEX")
 	# user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+
 	return render(request, 'ask_kosh/index.html')
 
 
 def ask_kosh(request):
-	return render(request, 'ask_kosh/ask_kosh.html')
+	form = NewQuestionForm()
+
+	return render(request, 'ask_kosh/ask_kosh.html', {'form': form})
 
 
 def question(request, question):
@@ -25,7 +27,6 @@ def signin(request):
 	if request.method == "POST":
 		form = SignInForm(request.POST)
 		if form.is_valid():
-			print(form)
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
 			user = authenticate(username=username, password=password)
@@ -51,7 +52,7 @@ def signup(request):
 			# user = User.objects.create_user(username, email, password)
 			user = authenticate(username=username, password=password)
 			login(request, user)
-			return redirect('index', {'user': user})
+			return redirect('index')
 	else:
 		form = SignUpForm()
 
@@ -69,7 +70,6 @@ def hot(request):
 	
 
 def year(request, n):
-	print(n)
 	return render(request, 'ask_kosh/index.html')
 
 

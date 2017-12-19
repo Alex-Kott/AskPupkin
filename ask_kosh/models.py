@@ -14,3 +14,9 @@ from django.db import models
 # 	is_superuser = models.BooleanField()
 # 	last_login = models.DateTimeField()
 # 	data_joined = models.DateTimeField()
+
+
+class Question(models.Model):
+	title = models.CharField(max_length=150)
+	text = models.TextField()
+	tags = models.TextField()
