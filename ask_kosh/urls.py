@@ -11,6 +11,7 @@ urlpatterns = [
 	url(r'^hot/$', views.hot, name='hot'),
 	url(r'^articles/(?P<n>[0-9]{1,4})/$', views.year, name="year"),
 	url(r'^tag/(?P<tag>[0-9]{1,4})/$', views.tag, name="tag"),
-	url(r'^question/(?P<question>[0-9]{1,4})/$', views.question, name="question"),
+	url(r'^question/(?P<question_id>[0-9]{1,4})/$', views.question, name="question"),
+	url(r'^settings/$', views.settings, name='settings'),
 
 ]
