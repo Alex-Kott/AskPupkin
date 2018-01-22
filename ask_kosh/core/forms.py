@@ -34,12 +34,21 @@ class QuestionForm(forms.ModelForm):
 		fields = ['title', 'text', 'tags']
 
 
+class UserForm(forms.Form):
+	class Meta:
+		model = User
+		fields = ['username', 'email', 'first_name', 'first_name']
+
+
 class ProfileForm(forms.ModelForm):
-	first_name = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(attrs={'class': "form-control"}))
-	last_name = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(attrs={'class': "form-control"}))
-	email = forms.CharField(max_length=254, help_text='', widget=forms.TextInput(attrs={'class': "form-control"}))
+	# first_name = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(attrs={'class': "form-control"}))
+	# last_name = forms.CharField(max_length=30, required=False, help_text='', widget=forms.TextInput(attrs={'class': "form-control"}))
+	# email = forms.CharField(max_length=254, help_text='', widget=forms.TextInput(attrs={'class': "form-control"}))
 	userpic = forms.FileField()
 
 	class Meta:
-		model = User
-		fields = ['first_name', 'last_name', 'email', 'userpic']
+		model = Profile
+		fields = ['userpic']
+		widgets = {
+			'username': forms.FileField()
+		}

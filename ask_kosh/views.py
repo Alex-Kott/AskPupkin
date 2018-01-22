@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, resolve_url
 from django.template import RequestContext
 from django.contrib.auth.models import User
-from ask_kosh.core.forms import SignUpForm, SignInForm, QuestionForm, ProfileForm
+from ask_kosh.core.forms import SignUpForm, SignInForm, QuestionForm, ProfileForm, UserForm
 from django.contrib.auth import login, authenticate, logout
 
 from ask_kosh.models import Question
@@ -33,7 +33,6 @@ def ask_kosh(request):
 			return redirect(f'/question/{question.id}')
 	else:
 		form = QuestionForm()
-	print(request.user)
 	return render(request, 'ask_kosh/ask_kosh.html', {'form': form})
 
 
@@ -100,12 +99,22 @@ def tag(request, tag):
 
 
 def settings(request):
-	if request.method == "POST":
-		form = ProfileForm(request.POST)
+	if request.method == 'POST':
+		user_form = UserForm(request.POST)
+		profile_form = ProfileForm(request.POST, instance=request.user.profile)
+		if user_form.is_valid() and profile_form.is_valid():
+			user_form.save()
+			profile_form.save()
+			return redirect('settings:profile')
 	else:
-		form = ProfileForm()
-	print(request.user.profile)
-	return render(request, 'ask_kosh/settings.html', {'form': form})
+		user_form = UserForm(request.user)
+		profile_form = ProfileForm(instance=request.user.profile)
+	print(user_form)
+	print(profile_form)
+	return render(request, 'ask_kosh/settings.html', {
+		'user_form': user_form,
+		'profile_form': profile_form
+		})
 
 # def paginate(query_set, request):
 #
