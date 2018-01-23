@@ -5,17 +5,16 @@ from django.dispatch import receiver
 
 
 
-class Answer(models.Model):
-	question_id = models.IntegerField()
-	text = models.TextField()
-	user_id = models.IntegerField()
+
 
 
 class Question(models.Model):
 	title = models.CharField(max_length=150)
 	text = models.TextField()
 	tags = models.TextField()
-	correst_question_id = models.OneToOneField(Answer, on_delete=models.CASCADE)
+	# correсt_answer = models.OneToOneField(Answer, on_delete=models.CASCADE, null=True)
+
+
 
 
 class Profile(models.Model):
@@ -31,6 +30,11 @@ class Profile(models.Model):
 	def save_user_profile(sender, instance, **kwargs):
 		instance.profile.save()
 
+
+class Answer(models.Model):
+	text = models.TextField()
+	user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+	question = models.ForeignKey(Question, on_delete=models.CASCADE, default=0)
 
 class Tag(models.Model):
 	title = models.CharField(max_length=50)

@@ -1,28 +1,35 @@
-from django.shortcuts import render, redirect, resolve_url
-from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from ask_kosh.core.forms import SignUpForm, SignInForm, QuestionForm, ProfileForm, UserForm
+from django.db import transaction
+from django.shortcuts import render, redirect
+from ask_kosh.core.forms import SignUpForm, SignInForm, QuestionForm, ProfileForm, UserForm, AnswerForm
 from django.contrib.auth import login, authenticate, logout
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from ask_kosh.models import Question
+from ask_kosh.models import Question, Answer
 
 
 # Create your views here.
 
 
 def index(request):
-	# user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+	questions = Question.objects.all()
+	paginator = Paginator(questions, 5)
+	page = request.GET.get('page')
+	context = {}
+	try:
+		# Если существует, то выбираем эту страницу
+		context['questions'] = paginator.page(page)
+	except PageNotAnInteger:
+		# Если None, то выбираем первую страницу
+		context['questions'] = paginator.page(1)
+	except EmptyPage:
+		# Если вышли за последнюю страницу, то возвращаем последнюю
+		context['questions'] = paginator.page(paginator.num_pages)
 
-	return render(request, 'ask_kosh/index.html')
+	return render(request, 'ask_kosh/index.html', context)
 
 
-# if request.method == "POST":
-# 	# form = NewQuestionForm(request.POST)
-# 	print(request.POST)
-# 	# question_id = Question(form)
-# 	return render(request, 'ask_kosh/ask_kosh.html', {'form': form})
-#
-# else:
 
 
 def ask_kosh(request):
@@ -37,10 +44,20 @@ def ask_kosh(request):
 
 
 def question(request, question_id):
-	# if request.method == "POST":
 	question = Question.objects.get(id=question_id)
-	# form = QuestionForm(question)
-	return render(request, 'ask_kosh/question.html', {'question': question})
+	if request.method == "POST":
+		answer_form = AnswerForm(request.POST)
+		if answer_form.is_valid():
+			question_id = answer_form.cleaned_data.get('question_id')
+			question = Question.objects.get(id=question_id)
+			user = User.objects.get(id=request.user.id)
+			answer = Answer(question=question, user=user, text=answer_form.cleaned_data.get('text'))
+			answer.save()
+	context = {}
+	context['question'] = question
+	context['answer_form'] = AnswerForm(initial={'question_id':question_id})
+	context['answers'] = Answer.objects.filter(question=question)
+	return render(request, 'ask_kosh/question.html', context)
 
 
 def signin(request):
@@ -98,19 +115,19 @@ def tag(request, tag):
 	return render(request, 'ask_kosh/tag.html')
 
 
+@login_required
+@transaction.atomic
 def settings(request):
 	if request.method == 'POST':
-		user_form = UserForm(request.POST)
+		user_form = UserForm(request.POST, instance=request.user)
 		profile_form = ProfileForm(request.POST, instance=request.user.profile)
 		if user_form.is_valid() and profile_form.is_valid():
 			user_form.save()
 			profile_form.save()
-			return redirect('settings:profile')
+			return redirect('/settings/')
 	else:
-		user_form = UserForm(request.user)
+		user_form = UserForm(instance=request.user)
 		profile_form = ProfileForm(instance=request.user.profile)
-	print(user_form)
-	print(profile_form)
 	return render(request, 'ask_kosh/settings.html', {
 		'user_form': user_form,
 		'profile_form': profile_form

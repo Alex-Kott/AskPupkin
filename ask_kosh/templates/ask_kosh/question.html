@@ -48,12 +48,29 @@
         </div>
     </div>
 </div>
+<div class="answers_block">
 
+    {% for answer in answers %}
+        <div class="answer">
+            {{answer.text}}
+        </div>
+
+    {% endfor %}
+</div>
+<hr>
 <div class="answers_block row">
     <div class="col-lg-12">
+        <form method="POST">
+            {% csrf_token %}
+            <!--<input type="hidden" name="question_id" value="{{question.id}}">-->
+            {% for field in answer_form %}
+                {{field }}
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary pull-right">Answer</button>
+        </form>
 
     </div>
-
 </div>
 
 
