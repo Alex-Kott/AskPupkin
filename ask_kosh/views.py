@@ -13,7 +13,7 @@ from ask_kosh.models import Question, Answer
 
 
 def index(request):
-	questions = Question.objects.all()
+	questions = Question.objects.get_queryset().order_by('-id')
 	paginator = Paginator(questions, 5)
 	page = request.GET.get('page')
 	context = {}
@@ -32,7 +32,7 @@ def index(request):
 
 
 
-def ask_kosh(request):
+def ask(request):
 	if request.method == "POST":
 		form = QuestionForm(request.POST)
 		if form.is_valid():
@@ -40,7 +40,7 @@ def ask_kosh(request):
 			return redirect(f'/question/{question.id}')
 	else:
 		form = QuestionForm()
-	return render(request, 'ask_kosh/ask_kosh.html', {'form': form})
+	return render(request, 'ask_kosh/ask.html', {'form': form})
 
 
 def question(request, question_id):
@@ -72,10 +72,10 @@ def signin(request):
 					login(request, user)
 					return redirect('index')
 			else:
-				return render(request, 'ask_kosh/signin.html', {'form': form, 'user': user})
+				return render(request, 'ask_kosh/login.html', {'form': form, 'user': user})
 	else:
 		form = SignInForm()
-	return render(request, 'ask_kosh/signin.html', {'form': form})
+	return render(request, 'ask_kosh/login.html', {'form': form})
 
 
 def signup(request):
